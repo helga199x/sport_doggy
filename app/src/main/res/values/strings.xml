@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">SportDoggy</string>
+
+    <string name="act_button">Act</string>
+    <string name="dog_button">Dog</string>
+    <string name="settings_button">Set</string>
+    <string name="bank_button">Ruby</string>
+    <string name="food_button">Food</string>
+    <string name="shop_button">Shop</string>
+    <string name="dogs_button">Dogs</string>
+    <string name="calendar_button">Date</string>
+    <string name="goals_button">Goals</string>
+    <string name="statistic_button">Stat</string>
+
+    <string name="go_home_button">Go home</string>
+
+    <string name="timer">00:00:00</string>
+    <string name="stopwatch">00.00.00</string>
+    <string name="distance">0</string>
+
+    <string name="main_content_desc">Tamagochi dog main</string>
+    <string name="walk_button_desc">Go for walk</string>
+    <string name="running_dog_desc">Running dog</string>
+</resources>
