@@ -21,7 +21,8 @@ import androidx.core.content.ContextCompat;
 
 public class MainActivity extends ParentActivity implements SensorEventListener {
 
-    static private short menuStatus = 0;
+    static private String menuStatus = "hide_all";
+    static final private String[] menuStatuses = {"hide_all", "show_actions", "show_dog_actions"};
     static private Stopwatch stopwatchThread;
     static SensorManager sensorManager;
     static boolean isRunning = false;
@@ -65,13 +66,13 @@ public class MainActivity extends ParentActivity implements SensorEventListener 
         TableLayout dogButtons = findViewById(R.id.dogActions);
         TableLayout actButtons = findViewById(R.id.additionalActions);
         int visability;
-        if(menuStatus == 0 || menuStatus == 1) {
+        if(menuStatus.equals("hide_all") || menuStatus.equals("show_actions")) {
             visability = View.VISIBLE;
-            if(menuStatus == 1) actButtons.setVisibility(View.GONE);
-            menuStatus = 2;
+            if(menuStatus.equals("show_actions")) actButtons.setVisibility(View.GONE);
+            menuStatus = "show_dog_actions";
         } else {
             visability = View.GONE;
-            menuStatus = 0;
+            menuStatus = "hide_all";
         }
         dogButtons.setVisibility(visability);
     }
@@ -80,13 +81,13 @@ public class MainActivity extends ParentActivity implements SensorEventListener 
         TableLayout dogButtons = findViewById(R.id.dogActions);
         TableLayout actButtons = findViewById(R.id.additionalActions);
         int visability;
-        if(menuStatus == 0 || menuStatus == 2) {
+        if(menuStatus.equals("hide_all") || menuStatus.equals("show_dog_actions")) {
             visability = View.VISIBLE;
-            if(menuStatus == 2) dogButtons.setVisibility(View.GONE);
-            menuStatus = 1;
+            if(menuStatus.equals("show_dog_actions")) dogButtons.setVisibility(View.GONE);
+            menuStatus = "show_actions";
         } else {
             visability = View.GONE;
-            menuStatus = 0;
+            menuStatus = "hide_all";
         }
         actButtons.setVisibility(visability);
     }
@@ -126,7 +127,7 @@ public class MainActivity extends ParentActivity implements SensorEventListener 
         if (countSensor != null) {
             sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
         } else {
-            Toast.makeText(this, "STEP_COUNTER sensor not found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "STEP_COUNTER sensor was not found", Toast.LENGTH_SHORT).show();
         }
     }
 
